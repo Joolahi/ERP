@@ -1,0 +1,526 @@
+/* postcss-bem-linter: ignore */
+/* stylelint-disable at-rule-no-unknown */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
+@layer base {
+  body {
+    @apply bg-background text-text antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  * {
+    @apply border-neutral-700;
+  }
+}
+
+
+@layer components {
+  
+  /* ========================================
+     BUTTONS 
+     ======================================== */
+  
+  .btn {
+    @apply px-4 py-2.5 rounded-accon font-medium transition-all duration-200 inline-flex items-center justify-center gap-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  .btn-primary {
+    @apply btn bg-accon-500 text-white hover:bg-accon-600 shadow-accon;
+    @apply focus:ring-accon-400;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 15px rgba(0, 102, 255, 0.4);
+  }
+
+  .btn-accent {
+    @apply btn bg-accent-500 text-white hover:bg-accent-600;
+    @apply focus:ring-accent-500;
+  }
+
+  .btn-success {
+    @apply btn bg-success-600 text-white hover:bg-success-700;
+    @apply focus:ring-success-500;
+  }
+
+  .btn-danger {
+    @apply btn bg-danger-600 text-white hover:bg-danger-700;
+    @apply focus:ring-danger-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-neutral-700 text-text hover:bg-neutral-600 border border-neutral-600;
+    @apply focus:ring-neutral-500;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-text-secondary hover:bg-accon-900/30 hover:text-accon-300;
+    @apply focus:ring-accon-600;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3.5 text-lg;
+  }
+
+  /* ========================================
+     INPUTS & FORMS
+     ======================================== */
+  
+  .input {
+    @apply w-full px-3.5 py-2.5 bg-neutral-800/50 border border-neutral-700 rounded-accon;
+    @apply text-text placeholder:text-text-tertiary;
+    @apply focus:outline-none focus:ring-2 focus:ring-accon-500 focus:border-accon-500;
+    @apply disabled:bg-neutral-900 disabled:cursor-not-allowed disabled:text-text-tertiary;
+    @apply transition-all duration-200;
+  }
+
+  .input:focus {
+    @apply bg-neutral-800/70;
+  }
+
+  .input-sm {
+    @apply px-2.5 py-2 text-sm;
+  }
+
+  .input-lg {
+    @apply px-4 py-3.5 text-lg;
+  }
+
+  .label {
+    @apply block text-sm font-semibold text-text mb-2;
+  }
+
+  .select {
+    @apply input appearance-none cursor-pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%230066ff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
+
+  .checkbox {
+    @apply w-4 h-4 rounded border-neutral-700 bg-neutral-800/50;
+    @apply text-accon-500 focus:ring-2 focus:ring-accon-500 focus:ring-offset-2 focus:ring-offset-background;
+    @apply cursor-pointer transition-colors;
+  }
+
+  /* ========================================
+     CARDS & CONTAINERS
+     ======================================== */
+  
+  .card {
+    @apply bg-background-paper rounded-lg shadow-accon border border-neutral-800/50;
+  }
+
+  .card-header {
+    @apply px-6 py-4 border-b border-neutral-800/50 bg-gradient-to-r from-accon-900/20 to-transparent;
+  }
+
+  .card-body {
+    @apply px-6 py-5;
+  }
+
+  .card-footer {
+    @apply px-6 py-4 border-t border-neutral-800/50 bg-neutral-900/30;
+  }
+
+  /* ========================================
+     BADGES & STATUS
+     ======================================== */
+  
+  .badge {
+    @apply px-2.5 py-1 inline-flex items-center gap-1.5 text-xs font-semibold rounded-full;
+  }
+
+  .badge-primary {
+    @apply badge bg-accon-900/40 text-accon-300 border border-accon-700/50;
+  }
+
+  .badge-success {
+    @apply badge bg-success-900/40 text-success-300 border border-success-700/50;
+  }
+
+  .badge-warning {
+    @apply badge bg-warning-900/40 text-warning-300 border border-warning-700/50;
+  }
+
+  .badge-danger {
+    @apply badge bg-danger-900/40 text-danger-300 border border-danger-700/50;
+  }
+
+  .badge-accent {
+    @apply badge bg-accent-900/40 text-accent-300 border border-accent-700/50;
+  }
+
+  .badge-neutral {
+    @apply badge bg-neutral-800/50 text-neutral-300 border border-neutral-700/50;
+  }
+
+  /* Status indicators*/
+  .status-dot {
+    @apply w-2.5 h-2.5 rounded-full inline-block;
+  }
+
+  .status-active {
+    @apply status-dot bg-accon-400;
+    box-shadow: 0 0 8px rgba(0, 102, 255, 0.6);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .status-inactive {
+    @apply status-dot bg-neutral-600;
+  }
+
+  .status-warning {
+    @apply status-dot bg-warning-500;
+    box-shadow: 0 0 8px rgba(234, 179, 8, 0.5);
+  }
+
+  .status-error {
+    @apply status-dot bg-danger-500;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+  }
+
+  /* ========================================
+     TABLES
+     ======================================== */
+  
+  .table-container {
+    @apply bg-background-paper rounded-lg shadow-accon border border-neutral-800/50 overflow-hidden;
+  }
+
+  .table {
+    @apply min-w-full divide-y divide-neutral-800/50;
+  }
+
+  .table-header {
+    @apply px-6 py-4 text-left text-xs font-bold text-accon-300 uppercase tracking-wider;
+    @apply bg-gradient-to-r from-accon-900/30 to-neutral-900/30;
+  }
+
+  .table-cell {
+    @apply px-6 py-4 text-sm text-text;
+  }
+
+  .table-row {
+    @apply transition-all duration-150;
+  }
+
+  .table-row-hover {
+    @apply hover:bg-accon-900/10;
+  }
+
+  .table-row-selected {
+    @apply bg-accon-900/20 border-l-4 border-l-accon-500;
+  }
+
+  /* ========================================
+     NAVIGATION & HEADER
+     ======================================== */
+  
+  .nav-container {
+    @apply bg-background-light border-b border-accon-900/30 shadow-accon;
+    background: linear-gradient(to bottom, #152238, #0a1628);
+  }
+
+  .nav-link {
+    @apply px-4 py-2.5 rounded-accon text-text-secondary font-medium;
+    @apply hover:text-accon-300 hover:bg-accon-900/20 transition-all duration-200;
+  }
+
+  .nav-link-active {
+    @apply nav-link bg-accon-900/30 text-accon-300 border-b-2 border-b-accon-500;
+  }
+
+  .sidebar {
+    @apply bg-background-light border-r border-accon-900/30 h-full;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 text-text-secondary;
+    @apply hover:bg-accon-900/20 hover:text-accon-300 transition-all duration-200;
+  }
+
+  .sidebar-link-active {
+    @apply sidebar-link bg-accon-900/30 text-accon-300 border-r-4 border-r-accon-500;
+  }
+
+  /* ========================================
+     STATS & METRICS
+     ======================================== */
+  
+  .stat-card {
+    @apply card p-6;
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.05) 0%, transparent 100%);
+  }
+
+  .stat-value {
+    @apply text-3xl font-bold text-text;
+  }
+
+  .stat-label {
+    @apply text-sm text-text-secondary uppercase tracking-wide font-semibold;
+  }
+
+  .stat-change-positive {
+    @apply text-success-400 text-sm font-semibold;
+  }
+
+  .stat-change-negative {
+    @apply text-danger-400 text-sm font-semibold;
+  }
+
+  /* ========================================
+     MODALS & DIALOGS
+     ======================================== */
+  
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/80 backdrop-blur-sm z-40;
+  }
+
+  .modal-container {
+    @apply fixed inset-0 z-50 flex items-center justify-center p-4;
+  }
+
+  .modal {
+    @apply bg-background-paper rounded-lg shadow-accon-xl border border-accon-800/30;
+    @apply max-w-2xl w-full max-h-[90vh] overflow-hidden;
+  }
+
+  .modal-header {
+    @apply px-6 py-4 border-b border-neutral-800/50 flex items-center justify-between;
+    @apply bg-gradient-to-r from-accon-900/20 to-transparent;
+  }
+
+  .modal-title {
+    @apply text-xl font-bold text-text;
+  }
+
+  .modal-body {
+    @apply px-6 py-5 overflow-y-auto;
+  }
+
+  .modal-footer {
+    @apply px-6 py-4 border-t border-neutral-800/50 bg-neutral-900/30 flex justify-end gap-3;
+  }
+
+  /* ========================================
+     ALERTS & NOTIFICATIONS
+     ======================================== */
+  
+  .alert {
+    @apply px-4 py-3.5 rounded-accon border flex items-start gap-3;
+  }
+
+  .alert-info {
+    @apply alert bg-accon-900/20 border-accon-700/50 text-accon-200;
+  }
+
+  .alert-success {
+    @apply alert bg-success-900/20 border-success-700/50 text-success-200;
+  }
+
+  .alert-warning {
+    @apply alert bg-warning-900/20 border-warning-700/50 text-warning-200;
+  }
+
+  .alert-danger {
+    @apply alert bg-danger-900/20 border-danger-700/50 text-danger-200;
+  }
+
+  /* ========================================
+     LOADING & SKELETON
+     ======================================== */
+  
+  .skeleton {
+    @apply animate-pulse bg-neutral-800/50 rounded-accon;
+  }
+
+  .spinner {
+    @apply inline-block w-5 h-5 border-2 border-neutral-700 border-t-accon-500 rounded-full;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* ========================================
+     DIVIDERS
+     ======================================== */
+  
+  .divider {
+    @apply border-t border-neutral-800/50 my-6;
+  }
+
+  .divider-text {
+    @apply relative flex items-center;
+  }
+
+  .divider-text::before,
+  .divider-text::after {
+    @apply flex-1 border-t border-neutral-800/50;
+    content: '';
+  }
+
+  .divider-text span {
+    @apply px-4 text-sm text-text-tertiary uppercase font-semibold;
+  }
+
+  /* ========================================
+     PECIFIC ELEMENTS
+     ======================================== */
+  
+  /* Logo container */
+  .logo-accon {
+    @apply w-10 h-10 bg-gradient-accon rounded-lg flex items-center justify-center shadow-glow-blue-sm;
+  }
+
+  /* Highlight box */
+  .highlight-box {
+    @apply p-6 rounded-lg border-l-4 border-l-accon-500 bg-accon-900/10;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    @apply h-2 bg-neutral-800 rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full bg-gradient-accon transition-all duration-500;
+  }
+}
+
+/* ============================================================================
+   CUSTOM UTILITIES
+   ============================================================================ */
+@layer utilities {
+  .text-gradient-accon {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accon-400 to-accon-600;
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-400 to-accent-600;
+  }
+
+  .border-gradient-accon {
+    border-image: linear-gradient(to right, #0066ff, #003d99) 1;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-neutral-900;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-accon-800 rounded;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-accon-700;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ============================================================================
+   GLOBAL STYLES
+   ============================================================================ */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a1628;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #003d99;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0052cc;
+}
+
+/* Selection */
+::selection {
+  background-color: #0066ff;
+  color: white;
+}
+
+/* Focus visible */
+*:focus-visible {
+  outline: none;
+  @apply ring-2 ring-accon-500 ring-offset-2 ring-offset-background;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Glow effect for elements */
+.glow-accon {
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+}
+
+/* Animated background for hero sections */
+.bg-animated-accon {
+  background: linear-gradient(135deg, #0a1628 0%, #001433 50%, #0a1628 100%);
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
