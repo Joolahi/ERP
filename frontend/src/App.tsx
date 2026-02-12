@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-do
 import { Toaster } from 'sonner';
 import { DepartmentsPage } from './features/departments';
 import { ProductsPage } from './features/products';
+import { OrdersPage } from './features/orders';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -101,7 +102,7 @@ function App() {
               <Route path="/" element={<DashboardPage />} />
               <Route path="/departments" element={<DepartmentsPage />} />
               <Route path="/products" element={<ProductsPage />} />
-              <Route path="/orders" element={<OrdersPagePlaceholder />} />
+              <Route path="/orders" element={<OrdersPage />} />
             </Routes>
           </main>
         </div>
@@ -119,7 +120,7 @@ function App() {
           }}
         />
         
-        <ReactQueryDevtools initialIsOpen={false} />
+        {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
       </BrowserRouter>
     </QueryClientProvider>
   );
@@ -237,11 +238,11 @@ const DashboardPage = () => (
       </div>
       <div className="card-body">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Link to="/departments" className="btn-primary justify-start">
+          <Link to="/orders" className="btn-primary justify-start">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
-            Uusi osasto
+            Uusi tilaus
           </Link>
           <Link to="/products" className="btn-primary justify-start">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -296,15 +297,6 @@ const DashboardPage = () => (
           </div>
         </div>
       </div>
-    </div>
-  </div>
-);
-
-const OrdersPagePlaceholder = () => (
-  <div className="container mx-auto px-4 py-8">
-    <h1 className="text-3xl font-bold text-gradient-accon mb-4">Tilaukset</h1>
-    <div className="card card-body">
-      <p className="text-text-secondary">Tilaukset-sivu tulossa pian...</p>
     </div>
   </div>
 );

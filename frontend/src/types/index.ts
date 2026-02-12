@@ -47,7 +47,7 @@ export interface ProductCategory {
   id: number;
   code: string;
   name: string | null;
-  efficiency_multiplier: string;
+  efficiency_multiplier: number; // Changed from string
 }
 
 export interface Product {
@@ -55,7 +55,7 @@ export interface Product {
   item_number: string;
   description: string | null;
   category_code: string | null;
-  standard_time_minutes: string | null;
+  standard_time_minutes: number | null; // Changed from string
   is_active: boolean;
   created_at: string;
   updated_at: string;
@@ -66,7 +66,7 @@ export interface ProductCreate {
   item_number: string;
   description?: string | null;
   category_code?: string | null;
-  standard_time_minutes?: string | null;
+  standard_time_minutes?: number | null;
   is_active?: boolean;
 }
 
@@ -74,7 +74,7 @@ export interface ProductUpdate {
   item_number?: string;
   description?: string | null;
   category_code?: string | null;
-  standard_time_minutes?: string | null;
+  standard_time_minutes?: number | null;
   is_active?: boolean;
 }
 
@@ -83,6 +83,102 @@ export interface ProductListResponse {
   total: number;
   page: number;
   page_size: number;
+}
+
+// ============================================================================
+// Order Types
+// ============================================================================
+
+export type OrderStatus = 
+  | 'pending'       // Odottaa aloitusta
+  | 'in_progress'   // Työn alla
+  | 'completed'     // Valmis
+  | 'cancelled';    // Peruttu
+
+export type OrderPriority = 
+  | 'low'
+  | 'normal'
+  | 'high'
+  | 'urgent';
+
+export interface Order {
+  id: number;
+  order_number: string;
+  product_id: number;
+  department_id: number;
+  quantity: number;
+  status: OrderStatus;
+  priority: OrderPriority;
+  
+  // Timestamps
+  created_at: string;
+  updated_at: string;
+  started_at: string | null;
+  completed_at: string | null;
+  due_date: string | null;
+  
+  // Calculated fields
+  estimated_duration_minutes: number | null;
+  actual_duration_minutes: number | null;
+  efficiency_percentage: number | null;
+  
+  // Notes
+  notes: string | null;
+  
+  // Relations (optional - loaded with expand)
+  product?: Product;
+  department?: Department;
+}
+
+export interface OrderCreate {
+  order_number: string;
+  product_id: number;
+  department_id: number;
+  quantity: number;
+  priority?: OrderPriority;
+  due_date?: string | null;
+  notes?: string | null;
+}
+
+export interface OrderUpdate {
+  order_number?: string;
+  product_id?: number;
+  department_id?: number;
+  quantity?: number;
+  status?: OrderStatus;
+  priority?: OrderPriority;
+  due_date?: string | null;
+  notes?: string | null;
+}
+
+export interface OrderListResponse {
+  items: Order[];
+  total: number;
+  page: number;
+  page_size: number;
+}
+
+export interface OrderStats {
+  total: number;
+  by_status: {
+    pending: number;
+    in_progress: number;
+    completed: number;
+    cancelled: number;
+  };
+  by_priority: {
+    low: number;
+    normal: number;
+    high: number;
+    urgent: number;
+  };
+  overdue_count: number;
+  avg_efficiency: number | null;
+}
+
+export interface OrderWithDetails extends Order {
+  product: Product;
+  department: Department;
 }
 
 // ============================================================================
