@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ProductsList } from './ProductsList';
 import { ProductForm } from './ProductForm';
-import { useProductStats } from './useProducts';
+import { useProductStats } from '../../hooks/useProducts';
 import type { Product } from '../../types';
 
 export const ProductsPage = () => {

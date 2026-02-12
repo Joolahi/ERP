@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { DepartmentsList } from './DepartmentsList';
 import { DepartmentForm } from './DepartmentForm';
-import { useDepartmentStats } from './useDepartments';
+import { useDepartmentStats } from '../../hooks/useDepartments';
 import type { Department } from '../../types';
 
 export const DepartmentsPage = () => {

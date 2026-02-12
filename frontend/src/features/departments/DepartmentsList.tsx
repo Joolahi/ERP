@@ -4,7 +4,7 @@ import {
   useDeleteDepartment,
   useDeactivateDepartment,
   useActivateDepartment,
-} from './useDepartments';
+} from '../../hooks/useDepartments';
 import { Department } from '../../types';
 
 interface DepartmentsListProps {

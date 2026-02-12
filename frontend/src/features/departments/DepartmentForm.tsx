@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useCreateDepartment, useUpdateDepartment } from './useDepartments';
+import { useCreateDepartment, useUpdateDepartment } from '../../hooks/useDepartments';
 import type { Department, DepartmentCreate, DepartmentUpdate } from '../../types';
 
 interface DepartmentFormProps {

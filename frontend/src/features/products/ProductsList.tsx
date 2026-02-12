@@ -4,7 +4,7 @@ import {
   useDeleteProduct,
   useDeactivateProduct,
   useActivateProduct,
-} from './useProducts';
+} from '../../hooks/useProducts';
 import { Product } from '../../types';
 
 interface ProductsListProps {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useCreateProduct, useUpdateProduct } from './useProducts';
+import { useCreateProduct, useUpdateProduct } from '../../hooks/useProducts';
 import type { Product, ProductCreate, ProductUpdate } from '../../types';
 
 interface ProductFormProps {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useCreateOrder, useUpdateOrder } from '../../hooks/useOrders';
-import { useActiveProducts } from '../products/useProducts';
-import { useActiveDepartments } from '../departments/useDepartments';
+import { useActiveProducts } from '../../hooks/useProducts';
+import { useActiveDepartments } from '../../hooks/useDepartments';
 import type { Order, OrderCreate, OrderUpdate, OrderPriority } from '../../types';
 
 interface OrderFormProps {
